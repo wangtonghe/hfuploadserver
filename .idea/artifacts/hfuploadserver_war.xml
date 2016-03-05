@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="hfuploadserver:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="hfuploadserver.war">
+      <element id="artifact" artifact-name="hfuploadserver:war exploded" />
+    </root>
+  </artifact>
+</component>
