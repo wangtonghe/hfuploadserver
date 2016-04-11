@@ -3,24 +3,14 @@
   <display-name>和风音乐网文件上传服务器</display-name>
   <description>本系统为和风音乐网文件上传专用系统，用于上传歌曲、歌词、图片等信息</description>
 
-    <!--日志配置文件及参数配置-->
-    <listener>
-        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
-    </listener>
-    <context-param>
-        <param-name>log4jConfigLocation</param-name>
-        <param-value>classptah:log4j.properties</param-value>
-    </context-param>
 
-    <!--spring配置文件及参数配置-->
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
+    <!--spring配置参数-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:spring.xml</param-value>
+        <param-value>classpath:*.xml</param-value>
     </context-param>
-    
+
+    <!--编码过滤器-->
     <filter>
         <filter-name>encodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -31,23 +21,24 @@
     </filter>
     <filter-mapping>
         <filter-name>encodingFilter</filter-name>
-       <url-pattern>/*</url-pattern>
+        <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+    <!--为Spring配置监听器-->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 
     <servlet>
         <servlet-name>SpringMVC</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:spring.xml</param-value>
+            <param-value>classpath:spring-mvc.xml</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>SpringMVC</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/server/*</url-pattern>
     </servlet-mapping>
-    
-
-
-
 </web-app>

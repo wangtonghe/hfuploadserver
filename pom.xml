@@ -56,10 +56,79 @@
           <version>3.1.0</version>
       </dependency>
 
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-core-asl</artifactId>
+      <version>1.9.13</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-mapper-asl</artifactId>
+      <version>1.9.13</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-mapper-lgpl</artifactId>
+      <version>1.9.13</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>2.7.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.7.0</version>
+    </dependency>
+
+
+
 
 
   </dependencies>
+
+  <profiles>
+    <profile>
+      <id>local</id>
+      <properties>
+        <env.profile>local</env.profile>
+      </properties>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+    </profile>
+    <profile>
+      <id>remote</id>
+      <properties>
+        <env.profile>remote</env.profile>
+      </properties>
+    </profile>
+  </profiles>
   <build>
     <finalName>hfuploadserver</finalName>
+    <resources>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.xml</include>
+        </includes>
+        <filtering>true</filtering>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+        <excludes>
+          <exclude>local/**</exclude>
+          <exclude>remote/**</exclude>
+        </excludes>
+      </resource>
+      <resource>
+        <directory>src/main/resources/${env.profile}</directory>
+      </resource>
+    </resources>
   </build>
 </project>
