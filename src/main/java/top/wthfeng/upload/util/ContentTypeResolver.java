@@ -1,6 +1,6 @@
 package top.wthfeng.upload.util;
 
-import java.io.File;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
  * 文件类型解析类
@@ -11,16 +11,16 @@ import java.io.File;
  */
 public class ContentTypeResolver {
 
-//    @Value("${application.service.file.music}")
-    private static String musicUrl="/usr/local/hfmusic/music/";
+    @Value("${application.service.file.music}")
+    private  String musicUrl;
 
-//    @Value("${application.service.file.photo}")
-    private static String photoUrl="/usr/local/hfmusic/photo/";
+    @Value("${application.service.file.photo}")
+    private  String photoUrl;
 
-//    @Value("${application.service.file.lyrics}")
-    private static String lyricsUrl="/usr/local/hfmusic/lyrics/";
-//    @Value("${application.service.file.video}")
-    private static String videoUrl="/usr/local/hfmusic/video/";
+    @Value("${application.service.file.lyrics}")
+    private  String lyricsUrl;
+    @Value("${application.service.file.video}")
+    private  String videoUrl;
 
 
     /**
@@ -43,44 +43,7 @@ public class ContentTypeResolver {
         } else return "error";
     }
 
-    /**
-     * 获取上传文件url
-     * @param suffix
-     * @return
-     */
-    public static String getFileUrl(String suffix){
-        String fileUrl="";
-        if(".jpg".equals(suffix)){
-            File dir = new File(photoUrl);
-            if (!dir.exists() || !dir.isDirectory())  //若文件夹不存在，则创建文件夹
-            {
-                dir.mkdirs();  //可创建多级文件夹
-            }
-            fileUrl= photoUrl+GUIDUtil.normalGUID()+suffix;
-        }else if(".png".equals(suffix)){
-            File dir = new File(photoUrl);
-            if (!dir.exists() || !dir.isDirectory())  //若文件夹不存在，则创建文件夹
-            {
-                dir.mkdirs();  //可创建多级文件夹
-            }
-            fileUrl= photoUrl+GUIDUtil.normalGUID()+suffix;
-        }else if(".lrc".equals(suffix)){
-            File dir = new File(lyricsUrl);
-            if (!dir.exists() || !dir.isDirectory())  //若文件夹不存在，则创建文件夹
-            {
-                dir.mkdirs();  //可创建多级文件夹
-            }
-            fileUrl= lyricsUrl+GUIDUtil.normalGUID()+suffix;
-        }else if (".mp4".equals(suffix)){
-            File dir = new File(videoUrl);
-            if (!dir.exists() || !dir.isDirectory())  //若文件夹不存在，则创建文件夹
-            {
-                dir.mkdirs();  //可创建多级文件夹
-            }
-            fileUrl= videoUrl+GUIDUtil.normalGUID()+suffix;
-        }
-        return fileUrl;
-    }
+
 
 
 }

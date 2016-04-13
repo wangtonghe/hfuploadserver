@@ -85,18 +85,13 @@
       <artifactId>jackson-databind</artifactId>
       <version>2.7.0</version>
     </dependency>
-
-
-
-
-
   </dependencies>
 
   <profiles>
     <profile>
       <id>local</id>
       <properties>
-        <env.profile>local</env.profile>
+        <profiles.active>local</profiles.active>
       </properties>
       <activation>
         <activeByDefault>true</activeByDefault>
@@ -105,11 +100,13 @@
     <profile>
       <id>remote</id>
       <properties>
-        <env.profile>remote</env.profile>
+        <profiles.active>remote</profiles.active>
       </properties>
     </profile>
   </profiles>
+
   <build>
+    <!--项目名-->
     <finalName>hfuploadserver</finalName>
     <resources>
       <resource>
@@ -117,8 +114,8 @@
         <includes>
           <include>**/*.xml</include>
         </includes>
-        <filtering>true</filtering>
       </resource>
+
       <resource>
         <directory>src/main/resources</directory>
         <excludes>
@@ -126,10 +123,12 @@
           <exclude>remote/**</exclude>
         </excludes>
       </resource>
+
       <resource>
-        <directory>src/main/resources/${env.profile}</directory>
+        <directory>src/main/resources/${profiles.active}</directory>
       </resource>
     </resources>
+
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
