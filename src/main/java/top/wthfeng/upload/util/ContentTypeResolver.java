@@ -1,7 +1,5 @@
 package top.wthfeng.upload.util;
 
-import org.springframework.beans.factory.annotation.Value;
-
 import java.io.File;
 
 /**
@@ -14,15 +12,15 @@ import java.io.File;
 public class ContentTypeResolver {
 
 //    @Value("${application.service.file.music}")
-    private static String musicUrl="F:/hfmusic/music/";
+    private static String musicUrl="/usr/local/hfmusic/music/";
 
-    @Value("${application.service.file.photo}")
-    private static String photoUrl;
+//    @Value("${application.service.file.photo}")
+    private static String photoUrl="/usr/local/hfmusic/photo/";
 
 //    @Value("${application.service.file.lyrics}")
-    private static String lyricsUrl="F:/hfmusic/lyrics/";
+    private static String lyricsUrl="/usr/local/hfmusic/lyrics/";
 //    @Value("${application.service.file.video}")
-    private static String videoUrl="F:/hfmusic/video/";
+    private static String videoUrl="/usr/local/hfmusic/video/";
 
 
     /**

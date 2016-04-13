@@ -15,6 +15,7 @@ import java.io.FileOutputStream;
  */
 @Service
 public class FileUploadServiceImpl implements FileUploadService {
+    private static final String HOSTADDRESS = "http://wthfeng.top:8080/";
 
 
     public String  fileUpload(MultipartFile file) throws Exception {
@@ -29,7 +30,7 @@ public class FileUploadServiceImpl implements FileUploadService {
         }
         in.close();
         outputStream.close();
-        return fileUrl;
+        return HOSTADDRESS+fileUrl;
     }
 
 
