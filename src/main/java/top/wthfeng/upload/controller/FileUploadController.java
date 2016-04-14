@@ -29,24 +29,24 @@ public class FileUploadController {
 
     /**
      * 文件上传
-     * @param file
+     * @param file_data
      * @return
      * @throws Exception
      */
     @RequestMapping(value = "/upload/file",method = RequestMethod.POST)
     @ResponseBody
-    public Map<String,Object> fileUpload(@RequestParam MultipartFile file)throws Exception{
+    public Map<String,Object> fileUpload(@RequestParam MultipartFile file_data)throws Exception{
         Map<String,Object> result = new HashMap<String,Object>();
-        if(file==null||file.getOriginalFilename().length()<=0){
+        if(file_data==null||file_data.getOriginalFilename().length()<=0){
             result.put("code",1);
             result.put("data",new ViewErrorModel("file字段不能为空！"));
         }
-        if("error".equals(ContentTypeResolver.resolver(file.getContentType()))){
+        if("error".equals(ContentTypeResolver.resolver(file_data.getContentType()))){
             result.put("code",1);
             result.put("data",new ViewErrorModel("传入文件格式不合法！"));
         }
         ViewFileResult fileResult = new ViewFileResult();
-        fileResult.setFileUrl( uploadService.fileUpload(file));
+        fileResult.setFileUrl( uploadService.fileUpload(file_data));
         result.put("code",0);
         result.put("data",fileResult);
         return result;
