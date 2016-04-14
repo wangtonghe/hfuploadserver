@@ -24,9 +24,14 @@
 
     </bean>
 
-    <bean id="placeholderConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="fileEncoding" value="UTF-8" />
-        <property name="location" value="classpath:configuration.properties" />
+    <!--配置信息读取bean，可以注入到需要读取配置信息的对象中-->
+    <bean id="propertyConfigurerController"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:**/configuration.properties</value>
+            </list>
+        </property>
     </bean>
 
 

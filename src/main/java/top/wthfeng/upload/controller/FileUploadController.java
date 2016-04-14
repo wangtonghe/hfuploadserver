@@ -27,6 +27,8 @@ public class FileUploadController {
     @Autowired
     private FileUploadService uploadService;
 
+
+
     /**
      * 文件上传
      * @param file_data
@@ -51,6 +53,9 @@ public class FileUploadController {
         result.put("data",fileResult);
         return result;
     }
+
+
+
 
 
 }
