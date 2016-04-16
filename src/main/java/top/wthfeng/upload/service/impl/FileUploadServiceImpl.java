@@ -7,9 +7,9 @@ import top.wthfeng.upload.service.FileUploadService;
 import top.wthfeng.upload.util.ContentTypeResolver;
 import top.wthfeng.upload.util.GUIDUtil;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.InputStream;
 
 /**
  * @author wangtonghe
@@ -47,7 +47,7 @@ public class FileUploadServiceImpl implements FileUploadService {
     public String  fileUpload(MultipartFile file) throws Exception {
         String suffix = ContentTypeResolver.resolver(file.getContentType());  //文件后缀
         String fileUrl = getFileUrl(suffix);//根据后缀得到文件上传地址
-        ByteArrayInputStream in = (ByteArrayInputStream)file.getInputStream();
+        InputStream in = file.getInputStream();
         FileOutputStream outputStream = new FileOutputStream(fileUrl);
         byte[] buf = new byte[1024];
         int length =0;
