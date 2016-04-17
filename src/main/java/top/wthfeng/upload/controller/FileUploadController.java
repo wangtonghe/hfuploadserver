@@ -38,7 +38,7 @@ public class FileUploadController {
     @RequestMapping(value = "/upload/file",method = RequestMethod.POST)
     @ResponseBody
     public Map<String,Object> fileUpload(@RequestParam MultipartFile file_data)throws Exception{
-        Map<String,Object> result = new HashMap<String,Object>();
+        Map<String,Object> result = new HashMap<>();
         if(file_data==null||file_data.getOriginalFilename().length()<=0){
             result.put("code",1);
             result.put("data",new ViewErrorModel("file字段不能为空！"));
