@@ -88,6 +88,13 @@ public class FileUploadServiceImpl implements FileUploadService {
                 dir.mkdirs();  //可创建多级文件夹
             }
             fileUrl= uploadlyricsUrl+GUIDUtil.normalGUID()+suffix;
+        }else if (".mp3".equals(suffix)){
+            File dir = new File(uploadvideoUrl);
+            if (!dir.exists() || !dir.isDirectory())  //若文件夹不存在，则创建文件夹
+            {
+                dir.mkdirs();  //可创建多级文件夹
+            }
+            fileUrl= uploadvideoUrl+GUIDUtil.normalGUID()+suffix;
         }else if (".mp4".equals(suffix)){
             File dir = new File(uploadvideoUrl);
             if (!dir.exists() || !dir.isDirectory())  //若文件夹不存在，则创建文件夹

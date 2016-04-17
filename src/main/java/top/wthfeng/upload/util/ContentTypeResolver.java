@@ -34,13 +34,14 @@ public class ContentTypeResolver {
             return ".jpg";
         } else if ("image/png".equalsIgnoreCase(contentType)) {
             return ".png";
-        } else if ("text/plain".equalsIgnoreCase(contentType)) {
-            return ".lrc";
-        } else if ("video/mp3".equalsIgnoreCase(contentType)) {
+        } else if ("audio/mp3".equalsIgnoreCase(contentType)) {
             return ".mp3";
         } else if ("video/mp4".equalsIgnoreCase(contentType)) {
             return ".mp4";
-        } else return "error";
+        }else if("application/octet-stream".equalsIgnoreCase(contentType)){
+            return ".lrc";
+        }
+        else return "error";
     }
 
 

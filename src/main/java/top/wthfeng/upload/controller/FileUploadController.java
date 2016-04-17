@@ -42,10 +42,12 @@ public class FileUploadController {
         if(file_data==null||file_data.getOriginalFilename().length()<=0){
             result.put("code",1);
             result.put("data",new ViewErrorModel("file字段不能为空！"));
+            return result;
         }
         if("error".equals(ContentTypeResolver.resolver(file_data.getContentType()))){
             result.put("code",1);
             result.put("data",new ViewErrorModel("传入文件格式不合法！"));
+            return result;
         }
         ViewFileResult fileResult = new ViewFileResult();
         fileResult.setFileUrl( uploadService.fileUpload(file_data));
